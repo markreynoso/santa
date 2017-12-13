@@ -20,14 +20,14 @@ class Santa(object):
     def _naughty_list_maker(self):
         """Make a naughty list."""
         for person in range(100):
-            self.naughty_list.setdefault(fake.name, fake.address)
+            self.naughty_list.setdefault(fake.name(), fake.address())
 
     def _wish_list_maker(self):
         """Make a wish list."""
         for person in self.naughty_list:
-            self.wish_list.setdefault(person.name, fake.text(10))
+            self.wish_list.setdefault(person.name(), fake.text(10))
         for x in range(100):
-            self.wish_list.setdefault(person.name, fake.text(10))
+            self.wish_list.setdefault(person.name(), fake.text(10))
 
 
 if __name__ == '__main__':
@@ -42,7 +42,7 @@ if __name__ == '__main__':
             print(name.wish_list)
             add = input('What would you like to wish for?')
             user = input('What\'s your name?')
-            name.naughty_list.setdefault(user, fake.address)
+            name.naughty_list.setdefault(user, fake.address())
             name.wish_list.setdefault(user, add)
             print('I\'ll see what I can do.')
             print('Let us check the list...')
